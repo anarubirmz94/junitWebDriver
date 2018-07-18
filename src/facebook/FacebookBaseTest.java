@@ -9,16 +9,17 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class FacebookBaseTest {
 	
 	protected WebDriver driver;
-	
+	//Quitamos la definicion de @before porque tiene parametros
 	protected void setUp(String browser, String url) {
 		System.out.println("Arranca el browser porfa y navega a la pagina.");
+		System.setProperty("webdriver.chrome.driver", "C:\\test_automation\\drivers\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.get(url);
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 	}
 	
 	@After
-	protected void tearDown() {
+	public void tearDown() {
 		System.out.println("Destruye la configuracion");
 		driver.quit();
 	}
